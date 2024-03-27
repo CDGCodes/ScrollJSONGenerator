@@ -88,6 +88,10 @@ char *fragmentedJSON[] = {"{\n"
 
 int main(int argc, char *argv[])
 {
+	struct stat st = {0};
+	if (stat(path, &st) == -1) {
+		mkdir(path, 0700);
+	}
     CURL *curl;
     CURLcode res;
     curl = curl_easy_init();
